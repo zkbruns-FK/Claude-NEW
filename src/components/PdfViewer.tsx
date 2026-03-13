@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
+import pdfjsWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Route, Annotation, Waypoint, DrawingStroke, DrawingColor, WaypointType } from '../types';
 import { WaypointIcon } from './WaypointIcon';
 
-// Use locally bundled worker (reliable in production)
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+// Bundle worker via Vite — works reliably in dev and production
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorkerUrl;
 
 type InteractionMode = 'pan' | 'annotate' | 'draw' | 'waypoint' | 'erase';
 
