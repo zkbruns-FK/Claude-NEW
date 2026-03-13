@@ -4,8 +4,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Route, Annotation, Waypoint, DrawingStroke, DrawingColor, WaypointType } from '../types';
 import { WaypointIcon } from './WaypointIcon';
 
-// Use the bundled worker via CDN to avoid build complexity
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
+// Use locally bundled worker (reliable in production)
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 type InteractionMode = 'pan' | 'annotate' | 'draw' | 'waypoint' | 'erase';
 
